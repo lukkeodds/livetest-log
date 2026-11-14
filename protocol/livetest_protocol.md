@@ -164,3 +164,19 @@ unchanged.
 (`notified.csv`, 14 Nov 12:01:09Z and 12:10:44Z; 2.27 % and 2.17 %). They stay in the log (append-only) and
 are excluded from takeability (§5.2) and from the recommendation count in §6, as "below the floor at
 notification". None was bet.
+
+## 11. Amendment 3 — recommendations not seen (14 Nov 2026)
+
+Written on the first evening of the test, after 20 bets and 2 logged skips. It concerns a recommendation
+nobody looked at, not any close or result, and applies forward and to the rows already in `notified.csv`.
+
+**Gap.** §4 asks every recommendation not taken to be logged with a reason before kickoff. When the owner is
+away, a recommendation can appear and disappear without anyone opening the slip. Logging it as `price_gone`
+or `other` would claim an attempt that was never made, and would push takeability (§5.2) down for a reason
+that has nothing to do with the books.
+
+**Rule.** A notified recommendation (notified at or after the freeze, 11:56:09Z 14 Nov, with feed EV ≥ 3 %)
+whose game has no bet and no logged skip, and which is no longer on the board, is **not seen**. It is
+derived from the logs, not entered. Not seen is not an attempt: it is excluded from takeability (§5.2,
+the denominator of §6's bets / recommendations) and reported as its own count, per book. It is not a reason
+to stop or change a cell.
