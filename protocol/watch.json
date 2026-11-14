@@ -1,0 +1,155 @@
+{
+ "_doc": "Cells the scanner recommends from: the 22 CONFIRMED cells minus nordicbet ice-hockey totals (removed by the book-side check, protocol amendment 1, 14 Nov 2026) = 21 of the frozen verdict 14 Nov 2026 (data/confirm/verdict_2026-11-14.txt, hash in docs/freeze.log). Which sports run on a given day: TODO.md Call plan (--sports). show_all_sports: also scan and SHOW (not recommend) every book/market in these sports.",
+ "cells": [
+  {
+   "sport": "american-football",
+   "competition": "USA | NFL",
+   "book": "expekt.dk",
+   "mtype": "spreads|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "baseball",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "totals|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "basketball",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "totals|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "basketball",
+   "competition": "*",
+   "book": "bwin.dk",
+   "mtype": "totals|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "bet365",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "bwin.dk",
+   "mtype": "spreads|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "bwin.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "unibet.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "Finland | Liiga",
+   "book": "bet365",
+   "mtype": "1x2|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "Sweden | SHL",
+   "book": "bet365",
+   "mtype": "1x2|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "Sweden | SHL",
+   "book": "betano.dk",
+   "mtype": "1x2|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "USA | NHL",
+   "book": "bet365",
+   "mtype": "1x2|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "*",
+   "book": "bwin.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "soccer",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "soccer",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "spreads|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "soccer",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "tennis",
+   "competition": "*",
+   "book": "bet365",
+   "mtype": "totals-games|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "tennis",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "teamtotals-games-team1|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "tennis",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "teamtotals-games-team2|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "volleyball",
+   "competition": "*",
+   "book": "bet365",
+   "mtype": "spreads|result",
+   "source": "confirm verdict 2026-11-14: CONFIRMED"
+  }
+ ],
+ "show_all_sports": [
+  "american-football"
+ ]
+}
