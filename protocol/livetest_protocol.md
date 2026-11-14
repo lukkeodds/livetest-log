@@ -144,3 +144,23 @@ applies forward.
 The 22-cell figures quoted in §2 (EV-floor basis) are left as written; they were the basis for the floor
 and dropping one cell does not change the decision.
 
+
+## 10. Amendment 2 — recommendations start at the EV floor (14 Nov 2026, 12:15Z)
+
+Written during the first afternoon of the test, after four bets had been placed (all with slip EV ≥ 3 %)
+and before any of them had a close or a result. It applies forward only.
+
+**Defect.** The board (`live.py` `pick()`) marked the best watched row per game as a recommendation from
+EV 2 % (`EV_SHOW`), not from the 3 % floor of §2. A recommendation below the floor in the feed must then be
+logged as a `below_floor` skip (§4) and counts against takeability (§5.2), which is meant to measure whether
+a price at or above the floor is still on the slip — not whether the board recommended something the floor
+already excluded. The code did not match §2; nothing about any result was seen or used.
+
+**Change.** From 12:15Z on 14 Nov 2026 a row is recommended (and notified) only if its feed EV is ≥ 3 %
+(`TAKE_EV`). Rows from 2 % to 3 % are still shown, are not bet and are not logged. The slip floor of §2 is
+unchanged.
+
+**Already logged.** Two notifications before the change had feed EV below 3 %
+(`notified.csv`, 14 Nov 12:01:09Z and 12:10:44Z; 2.27 % and 2.17 %). They stay in the log (append-only) and
+are excluded from takeability (§5.2) and from the recommendation count in §6, as "below the floor at
+notification". None was bet.
