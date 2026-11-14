@@ -1,1 +1,2 @@
 bet_id,placed_at,rec_id,sport,competition,fixture_id,game,kickoff,book,mtype,market_id,outcome_id,bet,odds_feed,odds_slip,stake,q_at_bet,ev_feed,ev_slip,prices_as_of,max_stake_seen
+20261114-130224-ef74,2026-11-14T12:02:24+00:00,id1100107070465052|11102|11103|bwin.dk,basketball,"International | Eurobasket, Women, Qualification",id1100107070465052,Netherlands v Serbia,2026-11-14T13:30:00.000Z,bwin.dk,totals|result,11102,11103,Under 148.5,2.05,2.05,100.0,0.51111,0.0478,0.0478,2026-11-14T11:59:37+00:00,
