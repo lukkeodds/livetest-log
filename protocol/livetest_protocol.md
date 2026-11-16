@@ -180,3 +180,24 @@ whose game has no bet and no logged skip, and which is no longer on the board, i
 derived from the logs, not entered. Not seen is not an attempt: it is excluded from takeability (§5.2,
 the denominator of §6's bets / recommendations) and reported as its own count, per book. It is not a reason
 to stop or change a cell.
+
+## 12. Amendment 4 — keep the prices behind each recommendation (16 Nov 2026)
+
+Written after 43 bets, 41 settled and 34 closes had been seen on the board. Logistics only: it changes what
+`live.py` stores, not what is recommended, bet, closed or analysed. On the owner's decision (16 Nov).
+
+**Gap.** The scanner keeps no response body. What the board saw at a recommendation survives only as the
+row in `notified.csv` (odds, EV, `prices_as_of`). The free `historical-odds` path can be fetched again, but
+it expires (cycling: ~7 months; other sports not measured) and a later fetch cannot show that the feed was
+not revised after the fact.
+
+**Change.** From the commit of this amendment, `live.py scan`:
+
+1. after each fetch of a game with at least one notified recommendation (now or earlier), writes the merged
+   Pinnacle + book-group body to `data/live/raw/{fixtureId}.json.gz`, overwritten on every refetch until the
+   game leaves the window — so the last file is the last fetch before the bet decision closed;
+2. writes the Pinnacle body of every close fetch (`close_bets`) once, to `data/live/raw/{fixtureId}_close.json.gz`.
+
+Bodies are trimmed in time only (entries from 8 h before kickoff plus the last one before, as `screen.trim8`);
+no market is dropped. The files are local, not published and not in git; they are evidence to re-derive a
+logged EV or close, never an input to a decision. Games notified before this amendment have no file.
