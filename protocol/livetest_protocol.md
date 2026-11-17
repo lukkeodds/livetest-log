@@ -201,3 +201,69 @@ not revised after the fact.
 Bodies are trimmed in time only (entries from 8 h before kickoff plus the last one before, as `screen.trim8`);
 no market is dropped. The files are local, not published and not in git; they are evidence to re-derive a
 logged EV or close, never an input to a decision. Games notified before this amendment have no file.
+
+## 13. Amendment 5 — cells confirmed after the start (17 Nov 2026)
+
+Written after 44 bets on the board had been seen. On the owner's decision (17 Nov), after the slip check below. §8 allows a later-confirmed cell to be added by a dated
+amendment written before its first bet. The source is the frozen verdict of 17 Nov 2026
+(`data/confirm/verdict_2026-11-17.txt`, hash in `docs/freeze.log` 06:49:48Z, 0 DEFERRED). The verdict was
+taken under the screen rule and its addenda 10–12, without reference to the board's bets or results.
+
+**Cells.** Eight cells are CONFIRMED on 17 Nov that were not CONFIRMED on 14 Nov:
+
+| # | cell | route | slip check | decision |
+|---|---|---|---|---|
+| 1 | soccer · betinia.dk · teamtotals-team2 · fulltime | DEFERRED → CONFIRMED | 17 Nov (owner): away team total, 90 min, no extra time | added |
+| 2 | handball · betano.dk · spreads · fulltime | OPEN → rolling → CONFIRMED | 17 Nov: Nexe–Elverum −1.5 as feed; Buzau +8.5 1.75 / Flensburg −8.5 1.95, as feed. betano rules (betano.dk/artikel/bettingregler, read 17 Nov) 3.7.1: handball settles on regular time, excluding overtime | added |
+| 3 | ice-hockey · betano.dk · totals · fulltime | OPEN → rolling → CONFIRMED | 17 Nov (owner): totals offered both with and without overtime, side by side | added |
+| 4 | ice-hockey · betinia.dk · totals · fulltime | OPEN → rolling → CONFIRMED | 17 Nov: the two Czech U20 games in the feed not found on the site; totals offered both with and without overtime, side by side (owner) | added |
+| 5 | ice-hockey · unibet.dk · totals · fulltime | OPEN → rolling → CONFIRMED | 17 Nov (owner): totals offered both with and without overtime, side by side | added |
+| 6 | tennis · betano.dk · spreads-games · result | OPEN → rolling → CONFIRMED | 17 Nov: ±2.5 games ("partier"), as feed; betano rules (betano.dk/artikel/bettingregler, read 17 Nov) 3.3.2: a match started and not completed voids all unsettled bets | added |
+| 7 | tennis · betano.dk · totals-games · result | OPEN → rolling → CONFIRMED | betano rules (betano.dk/artikel/bettingregler, read 17 Nov) 3.3.2 as #6 | added |
+| 8 | basketball · nordicbet · totals · result | DEFERRED → CONFIRMED (15 Nov) | 17 Nov: total includes overtime, as Pinnacle's | added (nordicbet account funded 17 Nov) |
+
+All are pooled ("ALL <sport>") cells and enter `watch.json` with `competition: "*"`, and with
+`source: "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"`.
+
+**Slip check (as §9).** Before the freeze the owner opened at least one slip per cell. Three things are
+checked:
+
+- the market is present at the line;
+- the slip price agrees with the feed;
+- the market definition matches Pinnacle's.
+
+A definition mismatch removes the cell; the reason is the definition, never a CLV, profit or result.
+Points to check:
+
+- **Ice-hockey totals (3–5): regulation time or including overtime/shootout.** This is the mismatch that
+  removed nordicbet ice-hockey totals in §9. The screen's line check does not catch it: none of the eight
+  cells is flagged at book|market level, and nor was nordicbet ice-hockey totals.
+- **Soccer team totals (1):** the side is team2 = away, and the line applies to the away team alone in
+  90 minutes.
+- **Tennis games markets (6, 7):** the market counts games, not sets. Also check what a retirement does to
+  the bet (void, or settled on the result).
+- **Handball spreads (2):** regular time only, and full lines versus half lines.
+- **Basketball totals, nordicbet (8):** including overtime, as Pinnacle's basketball totals. This is the
+  book whose ice-hockey totals settle differently, so check the rule on the slip, not by analogy.
+
+**Ice-hockey totals (3–5), how a bet is taken.** All three books list a regulation-time total and an
+including-overtime total next to each other. The cells are confirmed on the feed's `totals|fulltime`, which
+is regulation time as Pinnacle's. A bet in these cells is placed only on the regulation-time total (the
+slip must say so); a slip that offers only the overtime total is a skip, logged as such. Checked 17 Nov 2026: on Liberec–Köln and Tappara–Mannheim (Champions Hockey
+League, total 5.5) the feed's prices for all three books matched the slip's regulation-time market, not the
+overtime one (`data/live/slipcheck_hockey_2026-11-17.md`). On one AHL game the feed carried identical prices
+under both periods, for the books and Pinnacle alike, so the feed cannot tell the two apart there. A bet in
+these cells is therefore taken only when the slip's regulation-time price is at or above take-at, as
+for every bet (§2).
+
+**What does not change.** Stake, EV floor, take-at rule, stop rules, call plan and the analysis in §6 apply
+to the added cells exactly as to the original 21. The added cells' bets count in the totals from their first
+bet. They are also reported as a separate line (by `source`), so the original 21-cell test can still be read
+on its own. The verdict's CLV for these cells is not used to set any stake or floor.
+
+**Not added by this amendment:**
+
+- the 28 ROLLING cells, which may come later, each by its own amendment once its rolling verdict is CONFIRMED;
+- the 2 OPEN cells: basketball bet365 totals is final OPEN, and soccer bwin spreads becomes ROLLING under
+  addendum 11.1;
+- nordicbet ice-hockey totals, which was removed in §9 and stays out.

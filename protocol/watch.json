@@ -1,5 +1,5 @@
 {
- "_doc": "Cells the scanner recommends from: the 22 CONFIRMED cells minus nordicbet ice-hockey totals (removed by the book-side check, protocol amendment 1, 14 Nov 2026) = 21 of the frozen verdict 14 Nov 2026 (data/confirm/verdict_2026-11-14.txt, hash in docs/freeze.log). Which sports run on a given day: TODO.md Call plan (--sports). show_all_sports: also scan and SHOW (not recommend) every book/market in these sports.",
+ "_doc": "Cells the scanner recommends from: the 22 CONFIRMED cells minus nordicbet ice-hockey totals (removed by the book-side check, protocol amendment 1, 14 Nov 2026) = 21 of the frozen verdict 14 Nov 2026 (data/confirm/verdict_2026-11-14.txt, hash in docs/freeze.log). Which sports run on a given day: TODO.md Call plan (--sports). show_all_sports: also scan and SHOW (not recommend) every book/market in these sports. Amendment 5 (17 Nov 2026) adds 8 cells confirmed by the frozen verdict of 17 Nov (data/confirm/verdict_2026-11-17.txt) = 29.",
  "cells": [
   {
    "sport": "american-football",
@@ -147,6 +147,62 @@
    "book": "bet365",
    "mtype": "spreads|result",
    "source": "confirm verdict 2026-11-14: CONFIRMED"
+  },
+  {
+   "sport": "soccer",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "teamtotals-team2|fulltime",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "handball",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "spreads|fulltime",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "*",
+   "book": "betinia.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "ice-hockey",
+   "competition": "*",
+   "book": "unibet.dk",
+   "mtype": "totals|fulltime",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "tennis",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "spreads-games|result",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "tennis",
+   "competition": "*",
+   "book": "betano.dk",
+   "mtype": "totals-games|result",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
+  },
+  {
+   "sport": "basketball",
+   "competition": "*",
+   "book": "nordicbet",
+   "mtype": "totals|result",
+   "source": "confirm verdict 2026-11-17: CONFIRMED (amendment 5)"
   }
  ],
  "show_all_sports": [
