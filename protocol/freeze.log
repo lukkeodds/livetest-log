@@ -77,3 +77,5 @@ df1365272418e439435cb3a455b205df893c6de97c64f5734e25098ab6a4771d  data/screen/sa
 2026-11-17T11:45:08Z amendment7 3ea2420447a3372afe74076db223f5bc5435fc66999773c0032f38cbd628e688  deploy/systemd/oddspapi-scan-daily.timer
 2026-11-17T11:45:08Z amendment7 a419f5b85c6d032ceb0571acb94483041417f484f648d2468936b3fbeb040c77  deploy/systemd/oddspapi-scan.service
 2026-11-17T11:56:14Z cutover amendment 7: services live on the VPS since 11:52Z; Mac launchd jobs disabled, Mac key renamed; push test delivered; systemd failure alert delivered (test unit); test_checks/test_swap/test_period/test_rolling pass on the server
+2026-11-17T12:11:50Z amendment8 7d1c33a5fa2e97cec18f75bb638847abbaa0c50187726c992a1d02b230cb0ecc  docs/livetest_protocol.md
+2026-11-17T12:11:50Z amendment8 8d84001ce01eef4b623df8836e1e938862aca5500840248bcc0c34df84e82c7b  live.py

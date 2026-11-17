@@ -334,3 +334,9 @@ are in place; their result is added to `docs/freeze.log` as a `cutover` line.
 
 **Shared key.** The cycling project (`cycling-model`) calls oddspapi with the same key. Its scripts must not
 run on the Mac while the server runs; they run on the server, or not at all.
+
+## 16. Amendment 8 — sport in the notification (17 Nov 2026)
+
+Written after 44 bets on the board had been seen. Logistics only, on the owner's request: the push text
+starts with the sport in Danish (e.g. "Ishockey · Over 5.5 (reg. time) @ 1.91 …"). Title, recommendation,
+`notified.csv` and everything else are unchanged.
