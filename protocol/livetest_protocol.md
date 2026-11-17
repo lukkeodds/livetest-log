@@ -267,3 +267,30 @@ on its own. The verdict's CLV for these cells is not used to set any stake or fl
 - the 2 OPEN cells: basketball bet365 totals is final OPEN, and soccer bwin spreads becomes ROLLING under
   addendum 11.1;
 - nordicbet ice-hockey totals, which was removed in §9 and stays out.
+
+## 14. Amendment 6 — the scanner pauses while the confirmation fetch holds the key (17 Nov 2026)
+
+Written after 44 bets on the board had been seen. Logistics only: it changes when `live.py scan` calls the
+API, not what is recommended, bet, closed or analysed. On the owner's decision (17 Nov).
+
+**Gap.** Only one process may call oddspapi at a time. `confirm.py nightly` (launchd 00:05, rolling confirmation,
+screen rule addendum 11) takes an exclusive lock on `data/confirm/.fetch.lock` (addendum 12). The scanner did
+not look at it, so a board left running past midnight shared the key with the nightly job.
+
+**Change.** From the commit of this amendment:
+
+1. `live.py scan` tests that lock before its fixture lists, before each game's fetch and before the close
+   fetches. While the lock is held it makes no call of any kind and waits, testing once a minute. It writes one
+   `PAUSE` line and one `RESUME` line to `data/live/scan.log`. The test takes the lock and releases it at
+   once; the scanner never keeps it.
+2. `confirm.py fetch`/`nightly` retry the lock for 10 s before exiting. Without the retry, a scanner test that
+   coincides with the job's start could make the nightly job exit for the night. A real second fetch still
+   holds the lock for hours, so the job still refuses then.
+
+A game whose prices would have been fetched during the pause is fetched after it, if it is still in the window.
+Recommendations during the nightly hours (CPH 00–about 03) can therefore be missed; they are not logged as
+"not seen" (amendment 3) because they were never shown.
+
+Tested in a sandbox with a lock held by another process: the scanner paused and resumed. Under constant
+probing the confirm-style start took the lock 200 of 200 times; it took it 198 of 200 times without the
+retry. Against a real holder it gave up after 10 s.
