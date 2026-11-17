@@ -294,3 +294,43 @@ Recommendations during the nightly hours (CPH 00–about 03) can therefore be mi
 Tested in a sandbox with a lock held by another process: the scanner paused and resumed. Under constant
 probing the confirm-style start took the lock 200 of 200 times; it took it 198 of 200 times without the
 retry. Against a real holder it gave up after 10 s.
+
+## 15. Amendment 7 — the live test moves to a server (17 Nov 2026)
+
+Written after 44 bets on the board had been seen. Logistics only: it changes where and how the scanner,
+the board, the nightly confirmation job and the public log run, and how a recommendation reaches the owner.
+It does not change what is recommended, bet, closed or analysed. On the owner's decision (17 Nov).
+
+**Why.** Until now everything ran on the owner's Mac, started by hand. It stopped when the lid was closed
+(16 Nov: one morning lost to sleep), and a recommendation was seen only on that Mac.
+
+**Change.** From the cutover recorded in `docs/freeze.log` (`cutover` line):
+
+1. **Where.** A VPS (OVHcloud VPS-1, Ubuntu 24.04, EU). It is reachable only over the owner's Tailscale
+   network: no port is open to the internet, and SSH accepts keys only. The Mac no longer calls oddspapi.
+   Its launchd jobs are disabled (plists renamed `.disabled`). The key and every live-test file move to the
+   server, which from then on is their only writer.
+2. **How.** systemd units, in `deploy/systemd/`:
+   - `oddspapi-scan` runs `board.py`, which starts `live.py scan` with the day's sports from the call plan
+     (Tue–Fri five sports, Sat five, Sun six, Monday none), restarted at 00:01 Europe/Copenhagen;
+   - `oddspapi-board` runs `server.py` on the Tailscale address only;
+   - `oddspapi-nightly` runs `confirm.py nightly` at 00:05 Europe/Copenhagen (screen rule addendum 11);
+   - `oddspapi-publish` runs `publish.py` every 5 minutes.
+   A unit that fails sends a Pushover alert, at most one per hour per unit.
+3. **Notification.** `live.py notify()` sends a new recommendation to the owner's phone through Pushover
+   (`push.py`) instead of a macOS notification. Title and text are unchanged, and the row in `notified.csv`
+   is written as before. If a push fails, it is printed to the scan log and does not stop the scanner. Such a
+   recommendation is "not seen" in the sense of amendment 3 only if no bet or skip follows.
+4. **Board address.** `server.py` binds to the address in `BOARD_BIND`. The default stays 127.0.0.1; on the
+   server it is the Tailscale address.
+
+**Checks fired before the server runs unattended** (`test_checks.py`, artificial positives, no API calls):
+`stale`, `broken`, `pin_suspect`, `mapping`, `uncheckable` and `suspect` rows each get their status, and a
+`suspect` row is never recommended. The double-bet guard refuses a second bet on the same game (HTTP 409). The
+fetch-lock pause sees the nightly job's lock and continues once it is released. A push without keys returns
+False without raising. `test_swap.py` and `test_period.py` (sides, periods, one bet per game) pass on the
+server too. The Pushover delivery path and the systemd failure alert are tested on the server after the keys
+are in place; their result is added to `docs/freeze.log` as a `cutover` line.
+
+**Shared key.** The cycling project (`cycling-model`) calls oddspapi with the same key. Its scripts must not
+run on the Mac while the server runs; they run on the server, or not at all.
