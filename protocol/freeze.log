@@ -79,3 +79,9 @@ df1365272418e439435cb3a455b205df893c6de97c64f5734e25098ab6a4771d  data/screen/sa
 2026-11-17T11:56:14Z cutover amendment 7: services live on the VPS since 11:52Z; Mac launchd jobs disabled, Mac key renamed; push test delivered; systemd failure alert delivered (test unit); test_checks/test_swap/test_period/test_rolling pass on the server
 2026-11-17T12:11:50Z amendment8 7d1c33a5fa2e97cec18f75bb638847abbaa0c50187726c992a1d02b230cb0ecc  docs/livetest_protocol.md
 2026-11-17T12:11:50Z amendment8 8d84001ce01eef4b623df8836e1e938862aca5500840248bcc0c34df84e82c7b  live.py
+2026-11-18T08:39:59Z amendment9 7cf1d368fd575e062e0dacf4133f4877c156ec7e28dbfdfec31b919c48938527  docs/livetest_protocol.md
+2026-11-18T08:39:59Z amendment9 281ece0366b80c833e590817317c78cee869180107236e18fd5445c5cf70d117  live.py
+2026-11-18T08:39:59Z amendment9 f726c0a15a914a0ddc3c83c53d99f32d479f1b5b3fad0e6c5c83ecd3c30dfc0e  clv_power_backfill.py
+2026-11-18T08:39:59Z amendment9 ec94dd78eb6fdebdd4bd91bd9c5985e571061735330898a05a1117b7e9eebdc0  server.py
+2026-11-18T08:39:59Z amendment9 f7ce07779e124461d49e8ffdd7eb8007c16aec0296540c505052a3da52cfac89  publish.py
+2026-11-18T08:39:59Z amendment9 da5009941d554264efacd2132c29c38b32ea64162819a72ce2c8f3a16f9552d9  web/index.html

@@ -340,3 +340,25 @@ run on the Mac while the server runs; they run on the server, or not at all.
 Written after 44 bets on the board had been seen. Logistics only, on the owner's request: the push text
 starts with the sport in Danish (e.g. "Ishockey · Over 5.5 (reg. time) @ 1.91 …"). Title, recommendation,
 `notified.csv` and everything else are unchanged.
+
+## 17. Amendment 9 — CLV under power de-vig is written (18 Nov 2026)
+
+Written after 73 closes under multiplicative de-vig had been seen on the board; **no CLV under power de-vig
+had been computed or seen by anyone.** §2, §6 rule 1 and §7 already require CLV under both de-vigs. Since
+the start, `live.py` wrote only the multiplicative one (`closes.csv`), so rule 1 ("≤ 0 under EITHER") and the
+§7 test could not be evaluated for power. No cell had reached 40 bets, so no stop was missed. This amendment
+changes no rule, no threshold and no bet. It writes the number the protocol already names.
+
+- **New log `data/live/closes_power.csv`**, append-only, columns `bet_id, q_close_pow, clv_pow,
+  computed_at, note`. Same close as `closes.csv`: Pinnacle's last price strictly before kickoff, same market
+  and outcome. De-vigged with `backfill.devig_power`. `clv_pow = odds_slip × q_close_pow − 1`.
+  `closes.csv` is untouched; its schema is published and it stays the multiplicative log.
+- **`live.py close_bets`** writes one row to each file per closed bet, from the same Pinnacle series.
+- **Backfill, once:** `clv_power_backfill.py` writes a `closes_power.csv` row for every bet already in
+  `closes.csv`. It uses the saved `raw/{fixture}_close.json.gz` where one exists. Otherwise it fetches
+  `/v4/historical-odds` again (free) under the amendment 6 fetch lock, so the scanner pauses. As a check, it
+  re-derives the multiplicative `q_close` from the same series. Any mismatch with `closes.csv` above
+  1e-4 stops the run rather than being written (rule 7). A close that was not available then is written
+  with `q_close_pow` blank and the note copied.
+- **Board and publication:** the board shows mean CLV under both, per book and overall.
+  `closes_power.csv` is published alongside the other logs.
